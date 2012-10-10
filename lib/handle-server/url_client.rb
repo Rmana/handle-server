@@ -9,7 +9,7 @@ module HandleServer
   class BadGateway < Exception ; end
   class UnexpectedRepsonse < Exception ; end
 
-  class Client < Object
+  class URLClient < Object
     attr_accessor :user_name, :password, :host, :port
 
     def initialize(attr = {})
@@ -19,7 +19,7 @@ module HandleServer
       self.port = attr[:port] || 80
     end
 
-    def retrieve_url(handle)
+    def retrieve(handle)
       response = HTTParty.get(full_url(handle))
       case response.code
       when 404
@@ -88,7 +88,7 @@ module HandleServer
     def base_url
       "http://#{host}:#{port}"
     end
-    
+
     def base_path
       "/handle-admin/handle"
     end
@@ -120,7 +120,7 @@ module HandleServer
     def auth_hash
       {:username => user_name, :password => password}
     end
-    
+
   end
 end
 

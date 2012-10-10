@@ -1,6 +1,6 @@
 # Handle::Server
 
-TODO: Write a gem description
+This is a very basic wrapper around the UIUC handle web service
 
 ## Installation
 
@@ -18,7 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+The important class is HandleServer::URLClient. Instantiate this with the correct host, port, username, and password.
+
+Then use the retrieve, create, update, and delete methods to operate on handles. Note that (as implied by the name)
+this client only deals with setting and retrieving the URL value associated with a handle. HandleServer::Client is
+left unused in case we ever need a client that deals with the rest of the web API.
+
 
 ## Contributing
 
