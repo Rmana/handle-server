@@ -1,15 +1,14 @@
-# -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'handle-server/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "handle-server"
-  gem.version       = Handle::Server::VERSION
+  gem.version       = HandleServer::VERSION
   gem.authors       = ["Howard Ding"]
   gem.email         = ["hding2@illinois.edu"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Client for UIUC handle server}
+  gem.summary       = %q{Client for UIUC handle server}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)

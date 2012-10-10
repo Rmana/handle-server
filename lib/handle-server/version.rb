@@ -1,5 +1,3 @@
-module Handle
-  module Server
-    VERSION = "0.0.1"
-  end
+module HandleServer
+  VERSION = "1.0.0"
 end
