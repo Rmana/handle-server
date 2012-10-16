@@ -1,6 +1,6 @@
-# Handle::Server
+# HandleServer
 
-This is a very basic wrapper around the UIUC handle web service
+This is a very basic (client) wrapper around the UIUC handle web service
 
 ## Installation
 
