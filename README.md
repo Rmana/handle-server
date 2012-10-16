@@ -18,17 +18,40 @@ Or install it yourself as:
 
 ## Usage
 
-The important class is HandleServer::URLClient. Instantiate this with the correct host, port, username, and password.
+The important classes are HandleServer::Client and HandleServer::URLClient.
+Instantiate these with the correct host, port, username, and password.
 
-Then use the retrieve, create, update, and delete methods to operate on handles. Note that (as implied by the name)
-this client only deals with setting and retrieving the URL value associated with a handle. HandleServer::Client is
-left unused in case we ever need a client that deals with the rest of the web API.
+The basic client has retrieve_raw, retrieve, exists?, create, update, and delete methods to operate on handles.
 
+retrieve_raw takes a handle and returns an HTTParty::Response. The raw XML is available from this via the body method.
 
-## Contributing
+retrieve takes a handle and returns HTTParty::Response.parsed_response, which is the result of parsing the raw XML
+into a hash. Note that some of the element names may be altered (e.g. handle-value in xml goes to handle_value as
+a hash key).
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+exists? takes a handle and returns whether or not the handle exists.
+
+The other methods require basic authentication parameters to have been supplied.
+
+delete takes a handle and deletes it from the handle server.
+
+create takes a handle and a hash and creates the requested handle. Valid parameters (hash keys) are:
+
+update takes a handle and a hash and updates the handle. The same parameters are available as in create.
+
+The URLClient adds some convenience methods when we only care about the URL for a handle.
+
+retrieve_url takes a handle and returns the corresponding URL.
+
+create_from_url takes a handle and url and creates a handle with that url.
+
+update_url takes a handle and url and updates the handle with the new url.
+
+The following exceptions (in the HandleServer namespace) may be raised as appropriate:
+
+HandleNotFound
+URLNotFound
+MalformedURI
+Unauthorized
+BadGateway
+UnexpectedResponse
