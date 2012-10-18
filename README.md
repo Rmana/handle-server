@@ -21,6 +21,16 @@ Or install it yourself as:
 The important classes are HandleServer::Client and HandleServer::URLClient.
 Instantiate these with the correct host, port, username, and password.
 
+To create a client pass a hash to the new method with the following parameters:
+
+- :host - address of the handle server
+- :port - (optional) port of the handle server, defaults to 80
+- :user_name - (optional) user name for authentication
+- :password - (optional) password for authentication
+
+Anything except retrieval will attempt to authenticate, so will need :user_name
+and :password.
+
 The basic client has retrieve_raw, retrieve, exists?, create, update, and delete methods to operate on handles.
 
 retrieve_raw takes a handle and returns an HTTParty::Response. The raw XML is available from this via the body method.
