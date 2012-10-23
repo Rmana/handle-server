@@ -57,7 +57,7 @@ module HandleServer
       response = HTTParty.put(full_url(handle), :query => query_params,
                               :basic_auth => auth_hash)
       case response.code
-        when 201
+        when 204
           return response.headers['location']
         when 400
           raise MalformedURI
